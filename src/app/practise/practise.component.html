@@ -1,0 +1,303 @@
+<!-- <p>practise works!</p>
+<input type="text" [(ngModel)]="pratice" />
+<h2>{{ pratice }}</h2> -->
+<!-- <div class="container">
+  <div class="row justify-content-center">
+    <form action="" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+      <h3>
+        Email
+        <span
+          style="color: red"
+          *ngIf="
+            emailValidator && emailValidator.invalid && emailValidator.touched
+          "
+          >*</span
+        >
+      </h3>
+      <input
+        type="email"
+        placeholder="Enter Your Email"
+        formControlName="email"
+      />
+      <br />
+      <span
+        style="color: red"
+        *ngIf="
+          emailValidator && emailValidator.invalid && emailValidator.touched
+        "
+        >This field is not Valid</span
+      >
+      <br />
+      <h3>
+        Password
+        <span
+          style="color: red"
+          *ngIf="
+            passwordValidator &&
+            passwordValidator.invalid &&
+            passwordValidator.touched
+          "
+          >*</span
+        >
+      </h3>
+      <input
+        type="password"
+        placeholder="PassWord"
+        formControlName="PassWord"
+      />
+      <br />
+      <span
+        style="color: red"
+        *ngIf="
+          passwordValidator &&
+          passwordValidator.invalid &&
+          passwordValidator.touched
+        "
+        >This field is not Valid</span
+      >
+      <br />
+      <button [disabled]="loginForm.invalid">Login</button>
+    </form>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row justify-content-center">
+    <form
+      nz-form
+      [nzLayout]="'vertical'"
+      [formGroup]="validateForm"
+      class="login-form"
+      (ngSubmit)="submitForm()"
+    >
+      <nz-form-item>
+        <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired>Email</nz-form-label>
+        <nz-form-control nzErrorTip="Email is required!">
+          <nz-input-group nzPrefixIcon="user">
+            <input
+              formControlName="email"
+              type="email"
+              nz-input
+              id="input"
+              placeholder="Username"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired
+          >PassWord</nz-form-label
+        >
+        <nz-form-control nzErrorTip="PassWord Must be at least 5 char!">
+          <nz-input-group nzPrefixIcon="lock">
+            <input
+              formControlName="PassWord"
+              nz-input
+              id="input"
+              type="password"
+              placeholder="Password"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <button
+            id="btn"
+            nz-button
+            nzType="primary"
+            [disabled]="!validateForm.valid"
+          >
+            Log in
+          </button>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- <nz-form-item>
+        <nz-form-control>
+          <button id="btn" nz-button nzType="primary" (click)="onAddhubby()">
+            Add Hobby
+          </button>
+        </nz-form-control>
+      </nz-form-item> -->
+      <!-- <div formArrayName="hobbies">
+        <div *ngFor="let hobby of validateForm.get('hobbies').controls">
+          <input type="text" />
+        </div>
+      </div> -->
+    </form>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <button
+      class="btn"
+      nzDanger
+      nz-button
+      nzType="primary"
+      (click)="setValue()"
+    >
+      Set preset value
+    </button>
+  </div>
+</div>
+<!-- 
+ <div *ngIf="submitted">
+   <h3>Your Data</h3>
+   <h3>User : {{user.email}}</h3>
+   <h3>User : {{user.PassWord}}</h3>
+ </div> -->
+<br />
+<nz-divider [ngClass]="['one']"></nz-divider>
+
+<!-- Table  -->
+
+<nz-table #basicTable [nzData]="listOfData" [nzLoading]="true">
+  <thead>
+    <tr>
+      <th>Sr No.</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.key }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.age }}</td>
+      <td>{{ data.address }}</td>
+      <td>
+        <a>Action 一 {{ data.name }}</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a>Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<nz-divider [ngClass]="['one']"></nz-divider>
+<br />
+<nz-table
+  #sortTable
+  [nzData]="listOfData2"
+  nzTableLayout="fixed"
+  [nzFrontPagination]="true"
+>
+  <thead>
+    <tr>
+      <th
+        *ngFor="let column of listOfColumn"
+        [nzSortFn]="column.compare"
+        [nzSortPriority]="column.priority"
+      >
+        {{ column.title }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of sortTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.chinese }}</td>
+      <td>{{ data.math }}</td>
+      <td>{{ data.english }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+<br />
+<nz-divider [ngClass]="['one']"></nz-divider>
+
+<nz-table
+  #borderedTable
+  nzBordered
+  nzFooter="Footer"
+  nzTitle="Header"
+  [nzData]="dataSet"
+>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of borderedTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.age }}</td>
+      <td>{{ data.address }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+<nz-divider [ngClass]="['one']"></nz-divider>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <dx-map
+        [center]="ObjMap"
+        [controls]="true"
+        width="500"
+        [zoom]="10"
+        provider="google"
+      >
+      </dx-map>
+    </div>
+  </div>
+</div>
+<nz-divider [ngClass]="['one']"></nz-divider>
+<div class="container pb-4">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <dx-date-box
+        width="500"
+        [min]="minDate"
+        [max]="now"
+        [value]="now"
+        (onValueChanged)="onValueChanged($event)"
+        label="Date and time"
+        labelMode="floating"
+        [(value)]="date"
+        type="time"
+        pickerType="list"
+        [interval]="20"
+      >
+      </dx-date-box>
+    </div>
+  </div>
+</div>
+<nz-divider [ngClass]="['one']"></nz-divider>
+<div class="container pb-4">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <dx-drop-down-button
+        width="250"
+        text="Sandra Johnson"
+        icon="user"
+        [items]="actions"
+        keyExpr="id"
+        displayExpr="text"
+        (onItemClick)="logAction($event)"
+        [splitButton]="true"
+        (onButtonClick)="logButtonClick()"
+        [useSelectMode]="true"
+        [selectedItemKey]="1"
+        (onSelectionChanged)="logSelectionChanged($event)"
+        [dropDownOptions]="dropDownOptions"
+      >
+      </dx-drop-down-button>
+    </div>
+  </div>
+</div>
+<nz-divider [ngClass]="['one']"></nz-divider>
+<div class="container pb-4">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <nz-time-picker
+        [(ngModel)]="time"
+        (ngModelChange)="log($event)"
+      ></nz-time-picker>
+    </div>
+  </div>
+</div>
+
+

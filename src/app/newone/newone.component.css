@@ -1,0 +1,12 @@
+.card {
+  width: 15rem;
+  border: 1px solid #000000;
+  /* padding: 1rem; */
+
+}
+
+.btn {
+  border-radius: 2rem;
+  font-weight: bold;
+  padding: 5px;
+}

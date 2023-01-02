@@ -1,0 +1,143 @@
+<div>
+  <!-- {{ user.firstName | lowercase }}  -->
+  {{ user.firstName | customPipe : user.firstName }}
+  <br />{{ user.lastName | uppercase }}
+  <br />
+  <!-- {{ user.DOB | date : "longDate" }} -->
+  <!-- {{ user.DOB | date : "short" }} -->
+  <!-- {{ user.DOB | date : "long" }} -->
+  <!-- {{ user.DOB | date : "MMMM dd yyyy" }} -->
+  {{ user.DOB | date : "short" | uppercase }}
+  <br />
+  <!-- {{ user.salery | currency: 'USD' :'code' }} -->
+  {{ user.salery | currency : "USD" : "code" : "3.0-1" }}
+  <br>
+  {{ user.salery | currency : "INR"}}
+  <br />
+  <!-- {{user.firstName | lowercase}} {{user.lastName | uppercase}} {{user.DOB | date:'MMMM '}} -->
+  {{ user | json | uppercase }}
+</div>
+
+<input type="text" [(ngModel)]="value" />
+<button (click)="EnterData()">Add Data</button>
+<div *ngFor="let data of arrCustom">
+  <br />
+  <h1 [appCustomStyle]="data">Custom Directive</h1>
+</div>
+<br />
+<div class="container pb-3">
+  <div class="row">
+    <div class="col-md-8">
+      <iframe
+        title="Wikipedia page for Avocados"
+        width="500"
+        height="250"
+        src="https://en.wikipedia.org/wiki"
+      ></iframe>
+    </div>
+    <div class="col-md-4">
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia animi
+        modi necessitatibus, illum sed sit recusandae dicta veritatis nisi
+        debitis voluptatum aut. Odio impedit quibusdam laboriosam similique,
+        omnis non ducimus!
+      </p>
+    </div>
+  </div>
+</div>
+
+<div [ngStyle]="colorsets">
+  This div is initially italic, normal weight, and extra large (24px).
+</div>
+
+<h1>Ngif <span *ngIf="ngiff">true | false</span></h1>
+
+<div
+  style="margin-left: 5rem"
+  class="search-div"
+  [ngClass]="{ changeBackgroundColor: searchValue != '' }"
+>
+  <input type="text" [(ngModel)]="searchValue" />
+  <span>
+    &nbsp; Your Search For
+    <span *ngIf="searchValue != ''">{{ searchValue }}</span></span
+  >
+</div>
+
+<div>
+  <h1 [ngClass]="{ ngclass: searchValue != '' }">Example of ngClass</h1>
+</div>
+
+<select style="margin-bottom: 1rem" [ngSwitch]="occupation">
+  <option *ngSwitchCase="'engineer'">engineer Lorem, ipsum dolor sit</option>
+  <option *ngSwitchCase="'doctor'">doctor Lorem, ipsum dolor sit amet</option>
+  <option *ngSwitchCase="'teacher'">teacher Lorem, ipsum dolor sit amet</option>
+  <option *ngSwitchDefault>Lorem, ipsum dolor sit amet</option>
+</select>
+
+<div>
+  <h1 class="one two">Learning Class</h1>
+</div>
+
+<div>
+  <h1 [ngClass]="['one']">Learning Class</h1>
+</div>
+
+<div *ngIf="showmsg; else Showelsemsg"><h1>else ngIf Example</h1></div>
+<ng-template #Showelsemsg> <h1>Show Else msg</h1></ng-template>
+
+<div *ngIf="showmsg; then ShowThenmsg; else ShowElsemsg"></div>
+<ng-template #ShowThenmsg>Showing Then Msg</ng-template>
+<ng-template #ShowElsemsg>Showing Else Msg</ng-template>
+
+<!-- <div [ngStyle]="color3">Property Binding</div> -->
+<div [style.color]="greenColor">Property Binding</div>
+<div [style.border]="border">Property Binding Border</div>
+
+<p [innerHTML]="lorem"></p>
+<div [ngClass]="'c1'">Property Binding 3</div>
+<!-- <img [src]="img" alt=""> -->
+<input type="text" [placeholder]="place" />
+<a [href]="href" [attr.data-link]="updatedLink" [attr.updatedlink]="updatedLink"
+  >Google</a
+>
+
+<br />
+<button (click)="showAlert(10)">Event Binding</button>
+<br />
+<input id="focus" type="text" (focus)="clickfocus()" />
+
+<br />
+<input type="text" [(ngModel)]="sheardata" />
+<button (click)="shearDatas()">click</button>
+{{ sheardata }}
+<h1>Pipes</h1>
+<div>
+  <!-- {{ user.firstName | lowercase }}  -->
+  {{ user.firstName | customPipe : user.firstName }}
+  <br />{{ user.lastName | uppercase }}
+  <br />
+  <!-- {{ user.DOB | date : "longDate" }} -->
+  <!-- {{ user.DOB | date : "short" }} -->
+  <!-- {{ user.DOB | date : "long" }} -->
+  <!-- {{ user.DOB | date : "MMMM dd yyyy" }} -->
+  {{ user.DOB | date : "fullTime" }}
+  <br />
+  <!-- {{ user.salery | currency: 'USD' :'code' }} -->
+  {{ user.salery | currency : "USD" : "code" : "3.0-1" }}
+  <br />
+  <!-- {{user.firstName | lowercase}} {{user.lastName | uppercase}} {{user.DOB | date:'MMMM '}} -->
+  {{ user | json | uppercase }}
+</div>
+
+<!-- <h1 appCustomStyle [Active1]="'Active'">Active Custom Directive 1</h1> -->
+<h1 [appCustomStyle]="'Active'">Active Custom Directive 1</h1>
+<h1 [appCustomStyle]="'Disabled'">Disabled Custom Directive 2</h1>
+<h1 [appCustomStyle]="'Checked'">Checked Custom Directive 3</h1>
+<h1 [appCustomStyle]>Custom Directive 3</h1>
+<div ngNonBindable>{{ 1 + 1 }}</div>
+<div #title>
+  <div #title>View Child</div>
+  <div #title>View Child</div>
+</div>
+<br />

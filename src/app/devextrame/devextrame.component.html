@@ -1,0 +1,114 @@
+<h1>{{ value }}</h1>
+  rxjs - {{data}}
+<dx-scheduler
+  id="scheduler"
+  [dataSource]="appointments"
+  textExpr="title"
+  allDayExpr="dayLong"
+  recurrenceRuleExpr="recurrence"
+  [(currentDate)]="currentDate"
+  currentView="week"
+  timeZone="Europe/Berlin"
+  [adaptivityEnabled]="true"
+>
+  <dxi-view type="day" [startDayHour]="10" [endDayHour]="22"> </dxi-view>
+  <dxi-view type="week" [startDayHour]="10" [endDayHour]="22"> </dxi-view>
+  <dxi-view type="month"></dxi-view>
+  <dxo-editing [allowDragging]="false"> </dxo-editing>
+</dx-scheduler>
+
+<nz-divider></nz-divider>
+<dx-gallery [dataSource]="galleryDataSource" [height]="300"> </dx-gallery>
+<nz-divider></nz-divider>
+<dx-chart
+  id="chart"
+  [dataSource]="dataSource"
+  title="Pizza Shop Complaints"
+  palette="Harmony Light"
+>
+  <dxi-value-axis name="frequency" position="left" [tickInterval]="300">
+  </dxi-value-axis>
+  <dxi-value-axis
+    name="percentage"
+    position="right"
+    [showZero]="true"
+    [tickInterval]="20"
+    [valueMarginsEnabled]="false"
+  >
+    <dxo-label [customizeText]="customizeLabelText"></dxo-label>
+    <dxi-constant-line
+      [value]="80"
+      color="#fc3535"
+      dashStyle="dash"
+      [width]="2"
+    >
+      <dxo-label [visible]="false"></dxo-label>
+    </dxi-constant-line>
+  </dxi-value-axis>
+  <dxo-argument-axis>
+    <dxo-label overlappingBehavior="stagger"></dxo-label>
+  </dxo-argument-axis>
+  <dxo-tooltip
+    [enabled]="true"
+    [shared]="true"
+    [customizeTooltip]="customizeTooltip"
+  >
+  </dxo-tooltip>
+  <dxo-common-series-settings argumentField="complaint">
+  </dxo-common-series-settings>
+  <dxi-series
+    type="bar"
+    valueField="count"
+    axis="frequency"
+    name="Complaint frequency"
+    color="#fac29a"
+  >
+  </dxi-series>
+  <dxi-series
+    type="spline"
+    valueField="cumulativePercent"
+    axis="percentage"
+    name="Cumulative percentage"
+    color="#6b71c3"
+  >
+  </dxi-series>
+  <dxo-legend verticalAlignment="top" horizontalAlignment="center">
+  </dxo-legend>
+</dx-chart>
+<nz-divider></nz-divider>
+<div class="container pb-5">
+  <div class="row justify-content-center">
+    <dx-tree-view
+      id="treeView"
+      width="250"
+      class="one"
+      [dataSource]="products"
+      dataStructure="plain"
+      keyExpr="ID"
+      displayExpr="name"
+      parentIdExpr="categoryId"
+    >
+    </dx-tree-view>
+  </div>
+</div>
+<nz-divider></nz-divider>
+<dx-pie-chart
+[dataSource]="fruits"
+  (onPointClick)="onPointClick($event)"
+  [dataSource]="billionaires"
+  title="Top-5 Countries by Number of Billionaires"
+  type="doughnut"
+>
+  <dxi-series argumentField="fruit" valueField="count" argumentField="country" valueField="amount">
+    <dxo-label
+      [visible]="true"
+      position="columns"
+      [customizeText]="customizeText"
+    >
+      <dxo-connector [visible]="true">
+        <dxo-tooltip [enabled]="true" [contentTemplate]="contentTemplate">
+        </dxo-tooltip>
+      </dxo-connector>
+    </dxo-label>
+  </dxi-series>
+</dx-pie-chart>

@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <button nz-button [nzType]="'primary'" (click)="showModal()">
+        <span>Show Modal</span>
+      </button>
+      <nz-modal
+        [(nzVisible)]="isVisible"
+        nzTitle="Create Relation"
+        (nzOnCancel)="handleCancel()"
+        (nzOnOk)="handleOk()"
+      >
+        <ng-container *nzModalContent>
+          <p>Content one</p>
+          <p>Content two</p>
+          <p>Content three</p>
+        </ng-container>
+      </nz-modal>
+    </div>      
+  </div>
+</div>
+<nz-divider></nz-divider>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <button nz-button nzType="primary" (click)="showModal2()">
+        <span>Show Modal 2</span>
+      </button>
+      <nz-modal
+        [(nzVisible)]="isVisible2"
+        nzAutofocus="ok"
+        nzTitle="Modal Title"
+        (nzOnCancel)="handleCancel2()"
+        (nzOnOk)="handleOk2()"
+        [nzOkLoading]="isOkLoading"
+      >
+        <p *nzModalContent>Modal Content</p>
+      </nz-modal>
+    </div>
+  </div>
+</div>
+<nz-divider></nz-divider>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <button nz-button nzType="primary" (click)="showConfirm()">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>
+<nz-divider></nz-divider>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <button nz-button nzType="primary" (click)="success()">Success</button>
+    </div>
+  </div>
+</div>
+<nz-divider></nz-divider>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <button nz-button nzType="primary" (click)="info()">Info</button>
+    </div>
+  </div>
+</div>
+<nz-divider></nz-divider>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <button nz-button nzType="primary" (click)="error()">Error</button>
+    </div>
+  </div>
+</div>
+<nz-divider></nz-divider>
+<div class="container pb-3">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <button nz-button nzType="primary" (click)="warning()">Warning</button>
+    </div>
+  </div>
+</div>
+<nz-divider></nz-divider>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <button nz-button [nzType]="'primary'" (click)="Content()">
+        <span>Show Content Modal</span>
+      </button>
+    </div>
+  </div>
+</div>
+<nz-divider></nz-divider>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <button nz-button [nzType]="'primary'" (click)="create()">
+        <span> Create </span>
+      </button>
+    </div>
+  </div>
+</div>
+<nz-divider></nz-divider>
+<div class="container pb-3">
+  <div class="row">
+    <div class="col-md-12" align="center">
+      <button nz-button [nzType]="'primary'" (click)="showModal()">
+        <span>Show Modal</span>
+      </button>
+      <nz-modal
+        [(nzVisible)]="isVisible"
+        nzTitle="Create Relation"
+        (nzOnCancel)="handleCancel()"
+        (nzOnOk)="handleOk()"
+        (nzAfterOpen)="open()"
+        (nzAfterClose)="close()"
+      >
+        <ng-container *nzModalContent>
+          <p>Content one</p>
+          <p>Content two</p>
+          <p>Content three</p>
+        </ng-container>
+      </nz-modal>
+    </div>
+  </div>
+</div>

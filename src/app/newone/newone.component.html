@@ -1,0 +1,27 @@
+<div>
+  <div class="container">
+    <div class="row">
+          <div  class="col-md-4 mb-4" *ngFor="let temp of MoviesData" >
+            <div class="card" style="width: '18rem'">
+              <img src={{temp.img}} className="card-img-top" alt="..." />
+              <div class="card-body">
+                <h3 class="card-title">{{ temp.title }}</h3>
+                <h4 class="card-text"> {{ temp.describe }}</h4>
+              </div>
+            </div>
+          </div> 
+    </div>
+  </div>  
+  <br />
+  <button
+    style="margin-left: 2rem"
+    (click)="SendData()"
+    (titleNewOne)="(titleNewOne)"
+    type="button"
+    class="btn btn-danger"
+  >
+    Sent Data
+  </button>
+  <h1>{{datesss}}</h1>
+  <h1>{{fun}}</h1>
+</div>

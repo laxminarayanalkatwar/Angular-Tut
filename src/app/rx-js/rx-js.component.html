@@ -1,0 +1,47 @@
+<p id="demo">rx-js works!</p>
+<h1>{{ againtName }}</h1>
+<!-- <h1>{{ students2 }}</h1> -->
+<div>
+  <ng-content> </ng-content>
+</div>
+<!-- 
+<button #validate (click)="rajxEventObservable()">Click for Observable</button>
+<br />
+<button (click)="Navigate()">NaviGate</button>
+<br />
+<button
+  [routerLink]="['/about']"
+  [queryParams]="{ page: 10, name: 'aboutPage' }"
+  [fragment]="'load'"
+>
+  NaviGate Second Method
+</button>
+<br />
+<button routerLink="/about">NaviGate</button>
+<br />
+ <button onclick="onuseradd()">user Added</button> -->
+<div *ngIf="loading; then ShowThenmsg; else ShowElsemsg"></div>
+<ng-template #ShowThenmsg
+  ><h1><i nz-icon nzType="loading" nzTheme="outline"></i></h1
+></ng-template>
+<ng-template #ShowElsemsg>
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let temp of Jsonplaceholder">
+          <div class="card" style="width: '18rem'">
+            <img src="{{ temp.img }}" className="card-img-top" alt="...Image" />
+            <div class="card-body">
+              <h3 class="card-title">
+                <span>{{ temp.id }}</span
+                >. &nbsp;{{ temp.title }}
+              </h3>
+              <p class="card-text">{{ temp.body }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+  </div>
+</ng-template>
